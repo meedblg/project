@@ -1,0 +1,490 @@
+/* Add Tasks Page */
+:root {
+    --primary-color: #4a90e2;
+    --primary-hover: #357abd;
+    --secondary-color: #f5f7fa;
+    --text-color: #333;
+    --border-color: #dfe3e8;
+    --background-color: #ffffff;
+    --card-background: #ffffff;
+    --shadow-color: rgba(0, 0, 0, 0.1);
+    --danger-color: #e74c3c;
+    --danger-hover: #c0392b;
+    --success-color: #2ecc71;
+    --success-hover: #27ae60;
+    --completed-text: #95a5a6;
+    --priority-low: #2ecc71;
+    --priority-medium: #f39c12;
+    --priority-high: #e74c3c;
+    --category-personal: #3498db;
+    --category-work: #9b59b6;
+    --category-shopping: #1abc9c;
+    --category-other: #7f8c8d;
+    --spacing-unit: 8px;
+    --border-radius: 4px;
+    --transition-speed: 0.3s;
+}
+*, *::before, *::after {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+:root {
+    /* أضف المتغيرات التي تستخدمها إذا لم تكن موجودة */
+    --spacing-unit: 10px; /* مثال */
+    --card-background: white; /* مثال */
+    --border-radius: 8px; /* مثال */
+    --shadow-color: rgba(0, 0, 0, 0.1); /* مثال */
+    --primary-color: #4A90E2; /* مثال */
+    --border-color: #e0e0e0; /* مثال */
+    --background-color: white; /* مثال */
+    --text-color: #333; /* مثال */
+    --transition-speed: 0.3s; /* مثال */
+    --primary-hover: #3A7BBF; /* مثال */
+    --success-color: #5cb85c; /* مثال */
+    --input-background-focus: #F0F8FF; /* لون خلفية فاتح عند التركيز على الإدخال */
+    --hover-effect-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+}
+
+body {
+    background-color: #f5f7fa;
+    background-image: radial-gradient(circle at 10% 20%, rgba(0, 0, 0, 0.05) 16%, transparent 10.01%),
+                      radial-gradient(circle at 80% 40%, rgba(0, 0, 0, 0.05) 10%, transparent 10.01%),
+                      radial-gradient(circle at 50% 90%, rgba(0, 0, 0, 0.05) 10%, transparent 10.01%);
+    background-size: cover;
+    background-repeat: no-repeat;
+    display: flex; /* لجعل محتوى الـ body يستخدم flexbox */
+    flex-direction: column; /* لترتيب العناصر عمودياً */
+    min-height: 100vh; /* لجعل الـ body يملأ ارتفاع الشاشة */
+}
+
+
+.app-container {
+    /* تم تغيير الخصائص هنا لجعل النموذج يملأ المساحة المتاحة */
+    max-width: 100%; /* اجعله يملأ العرض بالكامل */
+    margin: 0; /* إزالة الهوامش الخارجية */
+    padding: calc(var(--spacing-unit) * 4); /* حافظ على الـ padding الداخلي */
+    background-color: var(--card-background);
+    border-radius: 0; /* إزالة الحدود الدائرية إذا أردت أن يملأ الشاشة تماماً */
+    box-shadow: none; /* إزالة الظل إذا أردت أن يملأ الشاشة تماماً */
+    flex-grow: 1; /* للسماح للحاوية بالنمو وملء المساحة المتاحة */
+    display: flex; /* استخدم flexbox لترتيب المحتوى الداخلي */
+    flex-direction: column; /* ترتيب المحتوى عمودياً */
+    justify-content: center; /* توسيط المحتوى عمودياً */
+    align-items: center; /* توسيط المحتوى أفقياً */
+}
+
+header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: calc(var(--spacing-unit) * 3);
+    padding-bottom: calc(var(--spacing-unit) * 2);
+    border-bottom: 1px solid var(--border-color);
+    /* إذا كنت تريد أن يكون الهيدر ثابتاً في الأعلى، أضف التالي: */
+    /* position: sticky; */
+    /* top: 0; */
+    /* width: 100%; */
+    /* background-color: var(--card-background); */ /* تأكد من وجود خلفية */
+    /* z-index: 1000; */ /* للتأكد من ظهوره فوق العناصر الأخرى */
+}
+header h1 {
+    color: var(--primary-color);
+    font-size: 1.8em;
+}
+.controls {
+    margin-bottom: calc(var(--spacing-unit) * 3);
+    display: grid;
+    gap: calc(var(--spacing-unit) * 2);
+    width: 100%; /* تأكد من أن الـ controls يملأ عرض الـ app-container */
+    max-width: 600px; /* يمكنك تعديل هذا لتحديد أقصى عرض للنموذج داخلياً */
+}
+#add-task-form {
+    display: grid;
+    grid-template-columns: 1fr auto;
+    gap: var(--spacing-unit);
+    align-items: end;
+    margin-bottom: calc(var(--spacing-unit) * 2);
+    width: 100%; /* تأكد من أن النموذج يملأ عرض الـ controls */
+}
+#add-task-form input[type="text"] {
+    grid-column: 1 / -1;
+    
+}
+.task-options {
+    grid-column: 1 / -1;
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--spacing-unit);
+}
+#add-task-form .add-btn {
+    grid-column: 2 / 3;
+    grid-row: 1 / 3;
+    align-self: stretch;
+    min-height: 40px;
+}
+input[type="text"],
+input[type="date"],
+select {
+    padding: calc(var(--spacing-unit) * 1.2);
+    border: 1px solid var(--border-color);
+    border-radius: var(--border-radius);
+    background-color: var(--background-color);
+    color: var(--text-color);
+    font-size: 15px;
+    flex-grow: 1;
+  width: 50%;
+   
+    
+}
+input[type="text"]:focus,
+input[type="date"]:focus,
+select:focus {
+    outline: none;
+    border-color: var(--primary-color);
+    box-shadow: 0 0 0 2px rgba(74, 144, 226, 0.3);
+    
+}
+button {
+    padding: calc(var(--spacing-unit) * 1.2) calc(var(--spacing-unit) * 2);
+    border: none;
+    border-radius: var(--border-radius);
+    cursor: pointer;
+    font-size: 1em;
+    font-weight: 500;
+    transition: background-color var(--transition-speed) ease, transform 0.1s ease;
+    display: inline-flex;
+    align-items: center;
+    gap: calc(var(--spacing-unit) * 0.5);
+}
+button:active {
+    transform: scale(0.98);
+}
+.add-btn {
+    background-color: var(--primary-color);
+    color: white;
+}
+.add-btn:hover {
+    background-color: var(--primary-hover);
+}
+.success-message {
+    margin-top: 15px;
+    padding: 10px;
+    border-radius: var(--border-radius);
+    background-color: var(--success-color);
+    color: white;
+    text-align: center;
+    font-weight: bold;
+    opacity: 1;
+    transition: opacity 0.3s ease-in-out;
+    
+}
+.success-message.hidden {
+    opacity: 0;
+    pointer-events: none;
+}
+
+
+/* My Tasks Page */
+.filters {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--spacing-unit);
+    padding: var(--spacing-unit);
+
+    border-radius: var(--border-radius);
+}
+.filters input, .filters select {
+    flex-grow: 1;
+    min-width: 100px;
+}
+#clear-filters-btn {
+    background-color: var(--secondary-color);
+    color: var(--text-color);
+    border: 1px solid var(--border-color);
+}
+#clear-filters-btn:hover {
+    background-color: var(--border-color);
+}
+.task-list-section h2 {
+    margin-bottom: var(--spacing-unit);
+    padding-bottom: var(--spacing-unit);
+    border-bottom: 1px solid var(--border-color);
+}
+#task-list {
+    list-style: none;
+    padding: 0;
+}
+#no-tasks-message {
+    text-align: center;
+    color: var(--completed-text);
+    padding: calc(var(--spacing-unit) * 2);
+    font-style: italic;
+}
+.task-item {
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-unit);
+    padding: calc(var(--spacing-unit) * 1.5);
+    margin-bottom: var(--spacing-unit);
+    background-color: var(--card-background);
+    border: 1px solid var(--border-color);
+    border-left-width: 5px;
+    border-radius: var(--border-radius);
+    box-shadow: 0 2px 5px var(--shadow-color);
+    transition: opacity 0.3s ease, transform 0.3s ease;
+    cursor: grab;
+    opacity: 1;
+    transform: scale(1);
+}
+.task-item.adding {
+    animation: fadeIn 0.5s ease forwards;
+}
+.task-item.deleting {
+    animation: fadeOut 0.4s ease forwards;
+}
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(-10px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+@keyframes fadeOut {
+    from { opacity: 1; transform: scale(1); }
+    to { opacity: 0; transform: scale(0.95); height: 0; padding: 0; margin: 0; border: 0; }
+}
+.task-item.completed .task-text {
+    text-decoration: line-through;
+    color: var(--completed-text);
+}
+.task-item.completed {
+    opacity: 0.7;
+}
+.task-item:hover {
+    border-color: var(--primary-color);
+}
+.task-details {
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+}
+.task-text {
+    font-size: 1.1em;
+    word-break: break-word;
+}
+.task-meta {
+    font-size: 0.85em;
+    color: var(--completed-text);
+    display: flex;
+    flex-wrap: wrap;
+    gap: calc(var(--spacing-unit) * 1.5);
+    margin-top: calc(var(--spacing-unit) * 0.5);
+}
+.task-meta span {
+    display: inline-flex;
+    align-items: center;
+    gap: calc(var(--spacing-unit) * 0.5);
+}
+.task-meta .due-date.overdue {
+    color: var(--danger-color);
+    font-weight: bold;
+}
+.task-meta .due-date.upcoming {
+    color: var(--priority-medium);
+    font-weight: bold;
+}
+.task-actions {
+    display: flex;
+    gap: calc(var(--spacing-unit) * 0.5);
+    align-items: center;
+}
+.delete-btn {
+    background-color: var(--danger-color);
+    color: white;
+    padding: calc(var(--spacing-unit) * 0.5) var(--spacing-unit);
+    font-size: 0.9em;
+}
+.delete-btn:hover {
+    background-color: var(--danger-hover);
+}
+.edit-btn {
+    background-color: var(--priority-medium);
+    color: white;
+    padding: calc(var(--spacing-unit) * 0.5) var(--spacing-unit);
+    font-size: 0.9em;
+    margin-left: var(--spacing-unit);
+}
+.edit-btn:hover {
+    background-color: #d35400;
+}
+.complete-btn {
+    background-color: var(--success-color);
+    color: white;
+    padding: calc(var(--spacing-unit) * 0.5) var(--spacing-unit);
+    font-size: 0.9em;
+    margin-left: auto;
+}
+.complete-btn:hover {
+    background-color: var(--success-hover);
+}
+.task-item[data-priority="low"] { border-left-color: var(--priority-low); }
+.task-item[data-priority="medium"] { border-left-color: var(--priority-medium); }
+.task-item[data-priority="high"] { border-left-color: var(--priority-high); }
+.category-badge {
+    padding: 2px 6px;
+    border-radius: var(--border-radius);
+    color: white;
+    font-size: 0.8em;
+    text-transform: capitalize;
+}
+.category-personal { background-color: var(--category-personal); }
+.category-work { background-color: var(--category-work); }
+.category-shopping { background-color: var(--category-shopping); }
+.category-other { background-color: var(--category-other); }
+.task-item.dragging {
+    opacity: 0.5;
+    cursor: grabbing;
+    border-style: dashed;
+}
+.task-item.drag-over {
+    border-top: 2px dashed var(--primary-color);
+    transform: scale(1.02);
+}
+.modal {
+    position: fixed;
+    inset: 0;
+    background-color: rgba(0, 0, 0, 0.6);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity var(--transition-speed) ease, visibility 0s var(--transition-speed) linear;
+    z-index: 1000;
+}
+.modal:not(.hidden) {
+    opacity: 1;
+    visibility: visible;
+    transition-delay: 0s;
+}
+.modal-content {
+    background-color: var(--card-background);
+    padding: calc(var(--spacing-unit) * 3);
+    border-radius: var(--border-radius);
+    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.2);
+    width: 90%;
+    max-width: 500px;
+    transform: scale(0.95);
+    transition: transform var(--transition-speed) ease;
+}
+.modal:not(.hidden) .modal-content {
+    transform: scale(1);
+}
+#edit-task-form {
+    display: grid;
+    gap: calc(var(--spacing-unit) * 1.5);
+}
+#edit-task-form label {
+    font-weight: bold;
+    margin-bottom: calc(var(--spacing-unit) * -0.5);
+    display: block;
+}
+.modal-actions {
+    display: flex;
+    justify-content: flex-end;
+    gap: var(--spacing-unit);
+    margin-top: var(--spacing-unit);
+}
+.modal-actions .save-btn {
+    background-color: var(--success-color);
+    color: white;
+}
+.modal-actions .save-btn:hover {
+    background-color: var(--success-hover);
+}
+.modal-actions #cancel-edit-btn {
+    background-color: var(--secondary-color);
+    color: var(--text-color);
+    border: 1px solid var(--border-color);
+}
+.modal-actions #cancel-edit-btn:hover {
+    background-color: var(--border-color);
+}
+.hidden {
+    display: none !important;
+}
+#task-description {
+    height: 200px; /* يمكنك التعديل حسب رغبتك */
+    box-sizing: border-box;
+    display: block;
+    width: 50%;
+    padding-bottom: 160px;
+}
+    
+/* Responsive */
+@media (max-width: 768px) {
+    body {
+        padding: var(--spacing-unit);
+    }
+    .app-container {
+        padding: calc(var(--spacing-unit) * 2);
+        margin: var(--spacing-unit) auto;
+    }
+    header h1 {
+        font-size: 1.5em;
+    }
+    #add-task-form {
+        grid-template-columns: 1fr;
+    }
+    #add-task-form input[type="text"],
+    .task-options {
+        grid-column: 1 / -1;
+    }
+    #add-task-form .add-btn {
+        grid-column: 1 / -1;
+        grid-row: auto;
+        justify-self: stretch;
+        margin-top: var(--spacing-unit);
+    }
+    .filters {
+        flex-direction: column;
+    }
+    .task-item {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: calc(var(--spacing-unit) * 1.5);
+    }
+    .task-details {
+        width: 100%;
+    }
+    .task-actions {
+        width: 100%;
+        justify-content: flex-end;
+        margin-top: var(--spacing-unit);
+    }
+    .complete-btn {
+        margin-left: 0;
+    }
+}
+@media (max-width: 480px) {
+    body {
+        font-size: 14px;
+    }
+    header h1 {
+        font-size: 1.3em;
+    }
+    .task-options {
+        flex-direction: column;
+    }
+    input[type="text"],
+    input[type="date"],
+    select,
+    button {
+        font-size: 0.95em;
+        padding: calc(var(--spacing-unit) * 1);
+    }
+    .task-meta {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: calc(var(--spacing-unit) * 0.5);
+    }
+}

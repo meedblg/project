@@ -1,0 +1,158 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+
+}
+
+body,input{
+    font-family: 'Poppins', sans-serif;
+}
+
+.container {
+   position: relative;
+   width: 100%; 
+   background-color: #fff;
+   min-height: 100vh;
+   overflow: hidden;
+ }
+  
+form{
+    display: flex;
+flex-direction: column;
+justify-content: center;
+align-items: center;
+min-height: 100vh;
+}
+.title{
+    font-size: 2.2rem;
+color: #0d0d0d;
+margin-bottom: 10px;
+}
+.input-field {
+  max-width: 380px;
+width: 100%;
+height: 55px;
+background-color: #f0f0f0;
+margin: 10px 0;
+border-radius: 55px;
+display: grid;
+grid-template-columns: 15% 85%;
+padding: 0 0.4rem;
+position: relative;
+transition: all 0.3s ease; /* باش تدير أنيميشن */
+
+}
+.input-field:focus-within {
+  transform: translateX(5px); /* تحرك شوية لليسار */
+  box-shadow: 0 0 5px #d6cfce; /* ظل خفيف يعطي إحساس بالتركيز */
+}
+
+.input-field i {
+  text-align: center;
+line-height: 55px;
+color: #666666;
+font-size: 1.1rem;
+}
+
+.input-field input {
+ background: none;
+outline: none;
+border: none;
+line-height: 1;
+font-weight: 600;
+font-size: 1rem;
+color: #333;
+transition: all 0.5s;
+}
+.input-field input:focus {
+  transform: translateX(5px);
+}
+input::placeholder {
+  color: #a0a0a0; 
+}
+
+.input-field input::placeholder-shown{
+    color: #aaa;
+    font-weight: 500;
+}
+.btn{
+    width: 150px;
+    height: 55px;
+    outline: none;
+    border: none;
+    border-radius: 48px;
+    background-color: #f25042;
+    color: #fff;
+    text-transform: uppercase;
+    font-weight: 600;
+    margin: 17px 0;
+    cursor: pointer;
+    transition: transform 0.3s ease;
+}
+.btn:hover{
+    background-color: #ff6e6c;
+    transform: translateY(-3px);
+  }
+
+.extra-links {
+    margin-top: 5px;
+    text-align: center;
+  }
+  
+  .extra-links a {
+    color: #f25042;
+    text-decoration: none;
+    font-size: 1rem;
+    
+  }
+  
+  .extra-links a:hover {
+    text-decoration: underline;
+  }
+  
+  .signup {
+    margin-top: 10px;
+    font-size: 0.9rem;
+    color: #555;
+  }
+  
+  .forgot {
+    display: block;
+    text-align: left;
+    margin-left: 37px;
+    width: 100%;
+    max-width: 380px;
+    margin-top: 10px;
+    font-size: 0.9rem;
+    color: #f25042;
+    text-decoration: none;
+  }
+  .forgot:hover {
+    text-decoration: underline;
+  }
+  
+    
+  .toggle-password {
+    position: absolute;
+    right: 25px;
+    top: 50%;
+    transform: translateY(-50%);
+    cursor: pointer;
+    color: #acacac;
+  }
+  
+  
+
+
+
+
+
+
+
+
+
+
+

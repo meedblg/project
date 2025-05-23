@@ -1,0 +1,344 @@
+* 
+{
+    margin: 0 ;
+    padding : 0;
+    }
+body 
+{
+    font-family: sans-serif;
+}
+/* ------------------navbar section ---------------*/
+#navbar
+{
+    position: sticky;
+    top : 0;
+    z-index: 10 ;
+    background-color: #f8f9fa;
+}
+
+.navbar-nav {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-grow: 1;
+} 
+.navbar-brand img
+{
+    height: 40px;
+    padding-left: 20px;
+
+}
+.navbar-nav li 
+{
+    padding: 0 10px ;
+}
+.navbar-nav li a {
+color : #1f1235 !important;
+   font-weight: 600;
+   float: right;
+   text-align: left;
+}
+.fa-bars{
+    color : #191a20 !important;
+    font-size: 30px;
+}
+.navbar-toggler{
+    outline : none !important
+}
+
+.navbar-buttons {
+    display: flex;
+    gap: 10px; /* مسافة بين الأزرار */
+    margin-left: 20px; /* مسافة بين الأزرار والقائمة */
+}
+
+.navbar-buttons .btn {
+    padding: 8px 15px;
+    border-radius: 20px;
+    font-size: 14px;
+    font-weight: bold;
+    text-transform: uppercase;
+    transition: all 0.3s ease;
+}
+
+.navbar-buttons .btn-primary {
+    background-color: #f25042;
+    color: #fff;
+    border: none;
+    
+}
+
+.navbar-buttons .btn-primary:hover {
+    background-color: #ff6e6c;
+    
+}
+
+.navbar-buttons .btn-outline-primary {
+    color: #ff6e6c;
+    border: 2px solid #ff6e6c;
+    background-color: transparent;
+}
+
+.navbar-buttons .btn-outline-primary:hover {
+    background-color: #ff6e6c;
+    color: #fff;
+    border: 2px solid #ff6e6c;
+}
+
+  
+  
+/* ------------------banner section ---------------*/
+#banner {
+    min-height: 100vh;
+    background-color: #f8f9fa;
+    padding: 5%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+ 
+}
+
+.promo-title
+{
+    margin: 10px 0 30px;
+    font-size: 64px;
+    font-weight: 600;
+ margin-top: 20px;
+    color: #0d0d0d;
+    font-family: "Comic Sans MS", cursive, sans-serif; 
+   
+    animation: fadeInLeft 1s ease-in-out;
+
+}
+.little-titre{
+    margin: 10px 0 30px;
+    font-size: 20px;
+    margin-top: 20px;
+    color: #1b1425;
+    
+    animation: fadeInLeft 1s ease-in-out 0s forwards;
+}
+#banner .btn-primary {
+    padding: 12px 30px;
+    font-size: 1.1rem;
+    font-weight: 600;
+    color: #fff;
+    background-color: #f25042;
+    border: none;
+    border-radius: 50px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+    text-decoration: none;
+    font-family: "Comic Sans MS", cursive, sans-serif; /* إضافة خط Comic Sans MS */
+    
+    animation: fadeInLeft 1s ease-in-out 0s forwards;
+}
+#banner .btn-primary:hover {
+    background-color: #ff6e6c;
+}
+
+#banner img {
+  
+    animation: fadeInRight 1s ease-in-out 0s forwards;
+}
+
+/* ------------------Animations ---------------*/
+@keyframes fadeInLeft {
+    from {
+        opacity: 0;
+        transform: translateX(-50px); /* يبدأ من اليسار */
+    }
+    to {
+        opacity: 1;
+        transform: translateX(0); /* ينتهي في مكانه الطبيعي */
+    }
+}
+
+/* ------------------features section ---------------*/
+#features {
+    min-height: 120vh;
+    background-color: #faeee7;
+    padding: 50px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    animation: fadeInLeft 1s ease-in-out 0s forwards;
+}
+.features-img{
+    width: 100px;
+   margin-top: 20px;
+}
+.features{
+    padding: 20px;
+}
+.features-h4{
+    padding: 5px 0;
+    margin-top: 25px;
+    text-transform: uppercase;
+}
+.title::before
+{
+content:'' ;
+background: #232946;
+height : 5px;
+width: 200px;
+margin-left: auto;
+margin-right: auto;
+display: block;
+transform: translateY(63px);
+}
+.title::after
+{
+content:'' ;
+background: #232946;
+height : 10px;
+width: 50px;
+margin-left: auto;
+margin-right: auto;
+margin-bottom: 40px;
+display: block;
+transform: translateY(8px);
+}
+.title {
+    color: #0d0d0d; 
+}
+
+/* ------------------About us section ---------------*/
+
+#about-us {
+    min-height: 140vh;
+    background-color: #f8f9fa;
+    padding: 50px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    animation: fadeInRight 1s ease-in-out 0s forwards;
+}   
+.about-title{
+    font-size: 40px;
+    font-weight: 600;
+    margin-top: 8px;
+}
+#about-us ul li{
+margin: 15px 0;
+font-size: 17px;
+}
+#about-us ul{
+    margin-left: 20px;
+}
+
+#about-us img {
+    margin-top: -80px; /* رفع الصورة للأعلى */
+}
+
+/* ------------------Testimonials section ---------------*/
+#testimonials {
+    min-height: 100vh; /* يجعل القسم يأخذ ارتفاع الشاشة بالكامل */
+    display: flex; /* تفعيل Flexbox */
+    flex-direction: column; /* ترتيب العناصر عموديًا */
+    justify-content: center; /* توسيط المحتوى عموديًا */
+    align-items: center; /* توسيط المحتوى أفقيًا */
+    background-color: #faeee7;
+    padding: 50px 0; /* مسافة داخلية من الأعلى والأسفل */
+}
+.testimonials{
+border-left: 4px solid #232946;
+margin-top: 100px;
+margin-bottom: 100px;
+
+}
+
+.testimonials img{
+    height: 60px;
+width: 60px;
+border-radius: 50%;
+margin: 0 10px;
+
+
+}
+.user-details{
+    display : inline-block;
+font-size: 12px;
+
+}
+/* ------------------Social Media section ---------------*/
+#social-media{
+background: #f8f9fa;
+padding: 100px 0;
+
+}
+
+#social-media p{
+    font-size: 36px;
+    font-weight: 600;
+    margin-bottom: 30px;
+}
+.social-icons img{
+    width: 60px;
+    transition: 0.5s;
+
+}
+.social-icons a:hover img{
+    transform: translateY(-10px);     
+}   
+/* ------------------Footer section ---------------*/
+#footer{
+    background-color: #0f0e17;
+color: #fff;
+
+}
+
+.footer-box{
+    padding: 50px;
+    animation: fadeInLeft 1s ease-in-out 0s forwards;
+}
+.footer-box img{
+    width: 120px;
+    margin-bottom: 30px;
+}
+.footer-box  .fa{
+margin-right: 25px;
+font-size: 25px;
+height: 40px;
+width: 40px;
+text-align: center;
+padding-top: 7px;
+border-radius: 6px;
+background-color: #f25042;
+
+}
+hr{
+    background-color:#fff;
+}
+.copyright {
+    margin-bottom: 0;
+    padding-bottom: 20px;
+    text-align: center;
+}
+.contact-box {
+    display: flex; 
+    flex-direction: column; 
+    align-items: center; 
+    text-align: center; 
+    margin-left: auto;
+    margin-right: auto;
+    padding: 20px;
+}
+
+.contact-box .fa {
+    margin: 5px 0;
+    font-size: 25px; 
+    color: #fff; 
+}
+
+.footer-img {
+    width: 100%;
+    max-width: 100%; 
+    height: auto;
+    display: block;
+}
+
